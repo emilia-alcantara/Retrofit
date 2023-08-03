@@ -5,8 +5,15 @@ import cl.individual.martes010823.data.remote.TerrenoAPI
 
 class Repositorio (private val terrenoApi:TerrenoAPI) {
 
-    fun getInfo() : List<Terreno> {
-        // pendiente!
+    suspend fun getInfo() : List<Terreno>{
+        val response = terrenoApi.getData()
+        if (response.isSuccessful) {
+            val respBody = response.body()
+            respBody?.let {
+                return it
+            }
+        }
+        return emptyList()
     }
 
 
