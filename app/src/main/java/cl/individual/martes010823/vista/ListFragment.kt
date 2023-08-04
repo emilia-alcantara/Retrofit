@@ -19,24 +19,25 @@ class ListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentListBinding.inflate(layoutInflater, container, false)
-        initRecycler()
+       // initRecycler()
         initListener()
 
         return binding.root
     }
 
     private fun initRecycler() {
-        //viewModel.getAllInfo()
+
         val terrenoAdapter = TerrenoAdapter()
         binding.recTerrenoList.adapter = terrenoAdapter
-        viewModel.terrenosLiveData.observe(viewLifecycleOwner) {
+        viewModel.terrenosLiveData().observe(viewLifecycleOwner) {
             terrenoAdapter.setData(it)
         }
     }
 
     private fun initListener() {
         binding.btnLoad.setOnClickListener {
-            viewModel.getAllInfo()
+           // viewModel.getAllInfo()
+            initRecycler()
         }
     }
 

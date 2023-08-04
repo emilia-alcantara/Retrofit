@@ -2,27 +2,29 @@ package cl.individual.martes010823.vista
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import cl.individual.martes010823.data.Repositorio
-import cl.individual.martes010823.data.remote.Terreno
+import cl.individual.martes010823.data.local.TerrenoDatabase
 import cl.individual.martes010823.data.remote.TerrenoRetroFit
 import kotlinx.coroutines.launch
 
 class TerrenoVM(app: Application) : AndroidViewModel(app) {
 
     val repo: Repositorio
-    val terrenosLiveData = MutableLiveData<List<Terreno>>()
+    fun terrenosLiveData () = repo.getAllTerrenos()
 
     init {
         val api = TerrenoRetroFit.getRetrofitTerreno()
-        repo = Repositorio(api)
+        val terrenoDatabase = TerrenoDatabase.getDatabase(app).getTerrenoDao()
+        repo = Repositorio(api, terrenoDatabase)
     }
 
     fun getAllInfo() = viewModelScope.launch {
-        terrenosLiveData.value = repo.getInfo()
+        repo.loadTerrenosToDatabase()
 
     }
+
+
 
 
 }
