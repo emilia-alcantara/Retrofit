@@ -23,7 +23,7 @@ abstract class TerrenoDatabase : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     TerrenoDatabase::class.java,
-                    "bar_database"
+                    "terreno_database"
                 ).build()
 
                 INSTANCE = instance
