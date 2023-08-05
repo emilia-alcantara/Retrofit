@@ -1,8 +1,12 @@
 package cl.individual.martes010823.vista
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.Navigation
+import androidx.navigation.Navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import cl.individual.martes010823.R
 import cl.individual.martes010823.data.local.TerrenoEntity
 import cl.individual.martes010823.data.remote.Terreno
 import cl.individual.martes010823.databinding.ItemLayoutBinding
@@ -33,7 +37,11 @@ class TerrenoAdapter: RecyclerView.Adapter<TerrenoAdapter.MyViewHolder>() {
     class MyViewHolder(val binding: ItemLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(terreno: TerrenoEntity) {
             binding.imgTerreno.load(terreno.imgSrc)
-
+            binding.cardTerreno.setOnClickListener{
+                val bundleDetalle = Bundle()
+                bundleDetalle.putString("id", terreno.id)
+                findNavController(binding.root).navigate(R.id.action_listFragment_to_detalleFragment, bundleDetalle)
+            }
         }
 
     }

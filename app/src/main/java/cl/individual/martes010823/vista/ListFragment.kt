@@ -19,9 +19,8 @@ class ListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentListBinding.inflate(layoutInflater, container, false)
-       // initRecycler()
         initListener()
-
+        initRecycler()
         return binding.root
     }
 
@@ -36,8 +35,7 @@ class ListFragment : Fragment() {
 
     private fun initListener() {
         binding.btnLoad.setOnClickListener {
-           // viewModel.getAllInfo()
-            initRecycler()
+            viewModel.getAllInfo()
         }
     }
 
