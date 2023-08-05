@@ -9,9 +9,9 @@
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/materialToolbar"
+        style="@style/my_toolbar_style"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -19,12 +19,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:title="@string/title_toolbar_detalle" />
+        app:title="@string/title_toolbar_detalle"
+        app:titleTextAppearance="@style/my_toolbar_text"
+        app:titleTextColor="@color/white" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardDetalle"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        app:cardCornerRadius="15dp"
         app:layout_constraintBottom_toTopOf="@+id/guideLayoutBottom"
         app:layout_constraintEnd_toStartOf="@+id/guideLayoutRight"
         app:layout_constraintStart_toStartOf="@+id/guideLayoutLeft"
@@ -74,9 +77,10 @@
 
             <TextView
                 android:id="@+id/txtPrice"
+                style="@style/cada_item_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TextView"
+                android:text="@string/price_txt_holder"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -85,9 +89,11 @@
 
             <TextView
                 android:id="@+id/txtType"
+                style="@style/cada_item_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TextView"
+                android:text="@string/type_txt_holder"
+                android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/txtPrice"
                 app:layout_constraintStart_toStartOf="@+id/txtPrice"
@@ -96,14 +102,17 @@
 
             <TextView
                 android:id="@+id/txtId"
+                style="@style/cada_item_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TextView"
+                android:text="@string/id_txt_holder"
+                android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtType"
-                app:layout_constraintVertical_bias="0.110000014" />
+                app:layout_constraintEnd_toStartOf="@+id/guideCardRight"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/guideCardLeft"
+                app:layout_constraintTop_toTopOf="@+id/guideCardBottom"
+                app:layout_constraintVertical_bias="0.0" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>

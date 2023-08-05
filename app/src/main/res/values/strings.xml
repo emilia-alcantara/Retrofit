@@ -3,4 +3,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_toolbar_detalle">Detalle</string>
+    <string name="price_txt_holder">Price</string>
+    <string name="type_txt_holder">Type</string>
+    <string name="id_txt_holder">Id</string>
+    <string name="first_frag_toolbar">Listado de terrenos</string>
 </resources>

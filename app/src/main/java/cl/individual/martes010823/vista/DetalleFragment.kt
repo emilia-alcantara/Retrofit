@@ -42,12 +42,11 @@ class DetalleFragment : Fragment() {
 
     private fun getSelectedItemDetails() {
         viewModel.getSelectedTerreno(terrenoId.toString()).observe(viewLifecycleOwner) {
-            binding.txtId.text = it.id
-            binding.txtPrice.text = it.price.toString()
-            binding.txtType.text = it.type
+            binding.txtId.text = "Id: ${it.id}"
+            binding.txtPrice.text = "$ ${it.price}"
+            binding.txtType.text = "Tipo: ${it.type}"
             binding.imgDetail.load(it.imgSrc)
         }
     }
-
 
 }
