@@ -24,6 +24,8 @@ class Repositorio(private val terrenoApi: TerrenoAPI, private val terrenoDao: Te
         }
 
     }
+
+    fun getSelectedItem(id:String): LiveData<TerrenoEntity> = terrenoDao.getTerrenoId(id)
 }
 
 // función de extensión para obtener una entidad (local) desde el terreno(remoto)

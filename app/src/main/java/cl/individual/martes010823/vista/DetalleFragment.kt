@@ -6,8 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
-import cl.individual.martes010823.R
 import cl.individual.martes010823.databinding.FragmentDetalleBinding
+import coil.load
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -20,13 +20,13 @@ class DetalleFragment : Fragment() {
     private val viewModel : TerrenoVM by activityViewModels()
 
     // TODO: Rename and change types of parameters
-    private var param1: String? = null
+    private var terrenoId: String? = null
     private var param2: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
+            terrenoId = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
     }
@@ -34,11 +34,19 @@ class DetalleFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentDetalleBinding.inflate(inflater, container, false)
-        binding.txtId.text = param1
-
+        getSelectedItemDetails()
         return binding.root
+    }
+
+    private fun getSelectedItemDetails() {
+        viewModel.getSelectedTerreno(terrenoId.toString()).observe(viewLifecycleOwner) {
+            binding.txtId.text = it.id
+            binding.txtPrice.text = it.price.toString()
+            binding.txtType.text = it.type
+            binding.imgDetail.load(it.imgSrc)
+        }
     }
 
 

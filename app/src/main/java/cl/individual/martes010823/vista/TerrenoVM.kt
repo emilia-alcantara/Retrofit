@@ -21,10 +21,9 @@ class TerrenoVM(app: Application) : AndroidViewModel(app) {
 
     fun getAllInfo() = viewModelScope.launch {
         repo.loadTerrenosToDatabase()
-
     }
 
-
+    fun getSelectedTerreno(id:String) = repo.getSelectedItem(id)
 
 
 }
